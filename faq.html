@@ -1,148 +1,98 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - Perguntas Frequentes | Consultório do Dr. Fernando Assunção</title>
-    <meta name="description" content="Perguntas frequentes sobre clínica geral, nefrologia, telemedicina e visitas domiciliares.">
-    <link rel="stylesheet" href="style.css">
-    <!-- Schema.org FAQPage for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Como funciona a telemedicina?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A telemedicina permite consultas médicas remotas via vídeo, áudio ou chat, garantindo segurança e privacidade. Você agenda normalmente, recebe um link no e-mail e entra na sala virtual no horário marcado."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quais doenças são tratadas pelo nefrologista?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "O nefrologista trata doenças renais como insuficiência renal crônica, cálculos renais, nefropatias autoimunes, hipertensão arterial secundária e distúrbios do equilíbrio eletrolítico."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Como agendar uma visita domiciliar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Para agendar visita domiciliar, acesse a página de agendamento, escolha "Visita Domiciliar", selecione data e horário disponíveis e preencha seus dados. Confirmação por e-mail ou WhatsApp."  
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O consultório aceita convênios?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim, atendemos diversos planos de saúde. Consulte a lista completa de convênios aceitos na página de Convênios ou entre em contato para confirmar seu plano."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quais exames são realizados?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Realizamos exames de sangue, urina, ultrassonografia renal, Doppler, teste de função renal e eletrolítico. Para exames complexos, fornecemos encaminhamento para laboratórios parceiros."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Como recebo a receita médica?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A receita é enviada por e-mail em PDF e também pode ser acessada no portal do paciente em nossa plataforma. Em casos de telemedicina, você recebe no mesmo dia da consulta."
-          }
-        }
-      ]
-    }
-    </script>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul class="menu">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="especialidades.html">Especialidades</a></li>
-                <li><a href="servicos.html">Serviços</a></li>
-                <li><a href="agendamento.html">Agendamento</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="faq.html" class="ativo">FAQ</a></li>
-                <li><a href="depoimentos.html">Depoimentos</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="privacidade.html">Privacidade</a></li>
-            </ul>
-        </nav>
-        <h1>Perguntas Frequentes</h1>
-    </header>
-    <main>
-        <section class="faq-list">
-            <h2>Dúvidas Comuns</h2>
-            <div class="faq-item">
+import React from "react";
+import { Accordion, AccordionItem } from "@radix-ui/react-accordion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { Helmet } from "react-helmet";
+
+const faqs = [
+  {
+    question: "Como funciona a telemedicina?",
+    answer:
+      "A telemedicina permite consultas médicas remotas via vídeo, áudio ou chat, garantindo segurança e privacidade. Você agenda normalmente, recebe um link no e-mail e entra na sala virtual no horário marcado.",
+    image: "/images/telemedicina.jpg",
+  },
+  {
+    question: "Quais doenças são tratadas pelo nefrologista?",
+    answer:
+      "O nefrologista trata doenças renais como insuficiência renal crônica, cálculos renais, nefropatias autoimunes, hipertensão arterial secundária e distúrbios do equilíbrio eletrolítico.",
+    image: "/images/nefrite.jpg",
+  },
+  {
+    question: "Como agendar uma visita domiciliar?",
+    answer:
+      "Para agendar visita domiciliar, acesse a página de agendamento, escolha 'Visita Domiciliar', selecione data e horário disponíveis e preencha seus dados. Confirmação por e-mail ou WhatsApp.",
+    image: "/images/visita-domiciliar.jpg",
+  },
+  {
+    question: "O consultório aceita convênios?",
+    answer:
+      "Sim, atendemos diversos planos de saúde. Consulte a lista completa de convênios aceitos na página de Convênios ou entre em contato para confirmar seu plano.",
+    image: "/images/convenios.jpg",
+  },
+  {
+    question: "Quais exames são realizados?",
+    answer:
+      "Realizamos exames de sangue, urina, ultrassonografia renal, Doppler, teste de função renal e eletrolítico. Para exames complexos, fornecemos encaminhamento para laboratórios parceiros.",
+    image: "/images/exames.jpg",
+  },
+  {
+    question: "Como recebo a receita médica?",
+    answer:
+      "A receita é enviada por e-mail em PDF e também pode ser acessada no portal do paciente em nossa plataforma. Em casos de telemedicina, você recebe no mesmo dia da consulta.",
+    image: "/images/receita-medica.jpg",
+  },
+];
+
+export default function FAQPage() {
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-10">
+      <Helmet>
+        <title>FAQ - Consultório do Dr. Fernando Assunção</title>
+        <meta
+          name="description"
+          content="Perguntas frequentes sobre clínica geral, nefrologia, telemedicina e visitas domiciliares."
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          })}
+        </script>
+      </Helmet>
+
+      <h1 className="text-3xl font-bold mb-6 text-center">Perguntas Frequentes</h1>
+      <Accordion type="single" collapsible className="space-y-4">
+        {faqs.map((faq, index) => (
+          <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg shadow-md">
+            <Card>
+              <CardContent className="p-4">
                 <details>
-                    <summary>Como funciona a telemedicina?</summary>
-                    <div class="answer">
-                        <p>A telemedicina permite consultas médicas remotas via vídeo, áudio ou chat, garantindo segurança e privacidade. Você agenda normalmente, recebe um link no e-mail e entra na sala virtual no horário marcado.</p>
-                        <img src="images/telemedicina.jpg" alt="Consulta por telemedicina" />
-                    </div>
+                  <summary className="font-semibold cursor-pointer text-lg mb-2">
+                    {faq.question}
+                  </summary>
+                  <p className="mb-4 text-gray-700">{faq.answer}</p>
+                  <img
+                    src={faq.image}
+                    alt={faq.question}
+                    className="w-full rounded-md object-cover h-56"
+                  />
                 </details>
-            </div>
-            <div class="faq-item">
-                <details>
-                    <summary>Quais doenças são tratadas pelo nefrologista?</summary>
-                    <div class="answer">
-                        <p>O nefrologista trata doenças renais como insuficiência renal crônica, cálculos renais, nefropatias autoimunes, hipertensão arterial secundária e distúrbios do equilíbrio eletrolítico.</p>
-                        <img src="images/nefrite.jpg" alt="Exame renal" />
-                    </div>
-                </details>
-            </div>
-            <div class="faq-item">
-                <details>
-                    <summary>Como agendar uma visita domiciliar?</summary>
-                    <div class="answer">
-                        <p>Para agendar visita domiciliar, acesse a página de agendamento, escolha "Visita Domiciliar", selecione data e horário disponíveis e preencha seus dados. Confirmação por e-mail ou WhatsApp.</p>
-                        <img src="images/visita-domiciliar.jpg" alt="Médico em visita domiciliar" />
-                    </div>
-                </details>
-            </div>
-            <div class="faq-item">
-                <details>
-                    <summary>O consultório aceita convênios?</summary>
-                    <div class="answer">
-                        <p>Sim, atendemos diversos planos de saúde. Consulte a lista completa de convênios aceitos na página de Convênios ou entre em contato para confirmar seu plano.</p>
-                        <img src="images/convenios.jpg" alt="Logos de convênios" />
-                    </div>
-                </details>
-            </div>
-            <div class="faq-item">
-                <details>
-                    <summary>Quais exames são realizados?</summary>
-                    <div class="answer">
-                        <p>Realizamos exames de sangue, urina, ultrassonografia renal, Doppler, teste de função renal e eletrolítico. Para exames complexos, fornecemos encaminhamento para laboratórios parceiros.</p>
-                        <img src="images/exames.jpg" alt="Amostras de exames laboratoriais" />
-                    </div>
-                </details>
-            </div>
-            <div class="faq-item">
-                <details>
-                    <summary>Como recebo a receita médica?</summary>
-                    <div class="answer">
-                        <p>A receita é enviada por e-mail em PDF e também pode ser acessada no portal do paciente em nossa plataforma. Em casos de telemedicina, você recebe no mesmo dia da consulta.</p>
-                        <img src="images/receita-medica.jpg" alt="Receita médica digital" />
-                    </div>
-                </details>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Consultório do Dr. Fernando Assunção. Todos os direitos reservados.</p>
-    </footer>
-</body>
-</html>
+              </CardContent>
+            </Card>
+          </AccordionItem>
+        ))}
+      </Accordion>
+      <Separator className="my-10" />
+      <p className="text-sm text-center text-gray-500">&copy; 2025 Consultório do Dr. Fernando Assunção. Todos os direitos reservados.</p>
+    </div>
+  );
+}
+
