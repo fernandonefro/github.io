@@ -1,58 +1,95 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Dr. Fernando Assunção</title>
-    <meta name="description" content="Artigos e dicas sobre saúde renal, medicina clínica e telemedicina com Dr. Fernando Assunção.">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="especialidades.html">Especialidades</a></li>
-                <li><a href="servicos.html">Serviços</a></li>
-                <li><a href="agendamento.html">Agendamento</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="depoimentos.html">Depoimentos</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="privacidade.html">Privacidade</a></li>
-            </ul>
-        </nav>
-        <h1>Blog</h1>
-    </header>
+import React from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { Card, CardContent } from "@/components/ui/card";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
-    <main>
-        <section class="blog-section">
-            <h2>Últimos Artigos</h2>
+const artigos = [
+  {
+    titulo: "Cuidados com a saúde renal",
+    imagem: "/images/saude-renal.jpg",
+    resumo: "Dicas práticas para proteger seus rins e melhorar sua qualidade de vida.",
+  },
+  {
+    titulo: "Quando procurar um clínico geral?",
+    imagem: "/images/clinico-geral.jpg",
+    resumo: "Saiba os sinais e sintomas que indicam a hora de agendar sua consulta clínica.",
+  },
+  {
+    titulo: "Vantagens da telemedicina",
+    imagem: "/images/telemedicina.jpg",
+    resumo: "Conheça os benefícios de consultar com seu médico de forma remota e segura.",
+  },
+];
 
-            <article class="blog-post">
-                <img src="images/saude-renal.jpg" alt="Imagem de rins saudáveis" width="300">
-                <h3><a href="artigo-saude-renal.html">Cuidados com a saúde renal</a></h3>
-                <p>A saúde dos rins é essencial para o bom funcionamento do corpo. Neste artigo, explicamos como prevenir doenças renais com hábitos simples como hidratação adequada, alimentação balanceada e exames periódicos. Saiba quais sinais merecem atenção e como o nefrologista pode te ajudar.</p>
-            </article>
+const dadosGrafico = [
+  { nome: "Jan", consultas: 40 },
+  { nome: "Fev", consultas: 55 },
+  { nome: "Mar", consultas: 80 },
+  { nome: "Abr", consultas: 60 },
+];
 
-            <article class="blog-post">
-                <img src="images/clinico-geral.jpg" alt="Consulta com médico clínico" width="300">
-                <h3><a href="artigo-clinico-geral.html">Quando procurar um clínico geral?</a></h3>
-                <p>Muitos sintomas leves podem ser sinais de algo mais sério. Um clínico geral é o primeiro passo para entender o que está acontecendo com sua saúde. Aprenda neste artigo quando é o momento certo para buscar ajuda médica e como esse profissional pode fazer a diferença no seu cuidado.</p>
-            </article>
+export default function BlogPage() {
+  return (
+    <div className="p-6 max-w-6xl mx-auto">
+      <header className="mb-8">
+        <h1 className="text-4xl font-bold mb-2">Blog - Dr. Fernando Assunção</h1>
+        <p className="text-gray-600">Dicas e artigos sobre saúde, nefrologia e clínica geral</p>
+      </header>
 
-            <article class="blog-post">
-                <img src="images/telemedicina.jpg" alt="Paciente em consulta por telemedicina" width="300">
-                <h3><a href="artigo-telemedicina.html">Vantagens da telemedicina</a></h3>
-                <p>Comodidade, acessibilidade e continuidade do cuidado. A telemedicina vem transformando a forma como pacientes e médicos se conectam. Entenda como essa modalidade funciona, suas vantagens, e quando ela é a melhor escolha para você ou sua família.</p>
-            </article>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Últimos Artigos</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {artigos.map((artigo, index) => (
+            <Card key={index}>
+              <img src={artigo.imagem} alt={artigo.titulo} className="w-full h-48 object-cover rounded-t-2xl" />
+              <CardContent>
+                <h3 className="text-lg font-bold mb-2">{artigo.titulo}</h3>
+                <p>{artigo.resumo}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
 
-        </section>
-    </main>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Consultas nos últimos meses</h2>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={dadosGrafico}>
+            <XAxis dataKey="nome" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="consultas" fill="#0ea5e9" radius={[4, 4, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </section>
 
-    <footer>
-        <p>&copy; 2025 Consultório do Dr. Fernando Assunção. Todos os direitos reservados.</p>
-    </footer>
-</body>
-</html>
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Perguntas Frequentes</h2>
+        <Accordion type="single" collapsible>
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Como agendar uma consulta?</AccordionTrigger>
+            <AccordionContent>
+              Você pode agendar online pela página de Agendamento, por WhatsApp ou por ligação. É simples e rápido.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger>Quais são as formas de pagamento aceitas?</AccordionTrigger>
+            <AccordionContent>
+              Aceitamos PIX, cartões de crédito e débito, além de alguns convênios. Consulte a lista completa na seção de Serviços.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Como funciona a consulta por telemedicina?</AccordionTrigger>
+            <AccordionContent>
+              Após agendar, você recebe um link de vídeo por e-mail ou WhatsApp. No horário marcado, basta clicar e iniciar a consulta.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </section>
+
+      <footer className="mt-12 border-t pt-6 text-center text-sm text-gray-500">
+        &copy; 2025 Consultório do Dr. Fernando Assunção. Todos os direitos reservados.
+      </footer>
+    </div>
+  );
+}
