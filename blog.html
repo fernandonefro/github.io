@@ -2,8 +2,9 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Dr. Fernando Assunção</title>
-    <meta name="description" content="Artigos e dicas de saúde, nefrologia e clínica geral.">
+    <meta name="description" content="Artigos e dicas sobre saúde renal, medicina clínica e telemedicina com Dr. Fernando Assunção.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,7 +16,7 @@
                 <li><a href="especialidades.html">Especialidades</a></li>
                 <li><a href="servicos.html">Serviços</a></li>
                 <li><a href="agendamento.html">Agendamento</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="depoimentos.html">Depoimentos</a></li>
                 <li><a href="contato.html">Contato</a></li>
@@ -24,16 +25,32 @@
         </nav>
         <h1>Blog</h1>
     </header>
+
     <main>
-        <section>
+        <section class="blog-section">
             <h2>Últimos Artigos</h2>
-            <ul>
-                <li><a href="#">Cuidados com a saúde renal</a></li>
-                <li><a href="#">Quando procurar um clínico geral?</a></li>
-                <li><a href="#">Vantagens da telemedicina</a></li>
-            </ul>
+
+            <article class="blog-post">
+                <img src="images/saude-renal.jpg" alt="Imagem de rins saudáveis" width="300">
+                <h3><a href="artigo-saude-renal.html">Cuidados com a saúde renal</a></h3>
+                <p>A saúde dos rins é essencial para o bom funcionamento do corpo. Neste artigo, explicamos como prevenir doenças renais com hábitos simples como hidratação adequada, alimentação balanceada e exames periódicos. Saiba quais sinais merecem atenção e como o nefrologista pode te ajudar.</p>
+            </article>
+
+            <article class="blog-post">
+                <img src="images/clinico-geral.jpg" alt="Consulta com médico clínico" width="300">
+                <h3><a href="artigo-clinico-geral.html">Quando procurar um clínico geral?</a></h3>
+                <p>Muitos sintomas leves podem ser sinais de algo mais sério. Um clínico geral é o primeiro passo para entender o que está acontecendo com sua saúde. Aprenda neste artigo quando é o momento certo para buscar ajuda médica e como esse profissional pode fazer a diferença no seu cuidado.</p>
+            </article>
+
+            <article class="blog-post">
+                <img src="images/telemedicina.jpg" alt="Paciente em consulta por telemedicina" width="300">
+                <h3><a href="artigo-telemedicina.html">Vantagens da telemedicina</a></h3>
+                <p>Comodidade, acessibilidade e continuidade do cuidado. A telemedicina vem transformando a forma como pacientes e médicos se conectam. Entenda como essa modalidade funciona, suas vantagens, e quando ela é a melhor escolha para você ou sua família.</p>
+            </article>
+
         </section>
     </main>
+
     <footer>
         <p>&copy; 2025 Consultório do Dr. Fernando Assunção. Todos os direitos reservados.</p>
     </footer>
